@@ -30,7 +30,7 @@ export function LaunchDialog({ initial, agent, onAgent, onClose }) {
   const [name, setName] = useState(agent?.name || '');
   const [region, setRegion] = useState(agent?.region || 'Mumbai');
   const [plan, setPlan] = useState(initial.plan);
-  const [focus, setFocus] = useState(agent?.focus || 'Research & discovery');
+  const [focus, setFocus] = useState(initial.focus || agent?.focus || 'Research & discovery');
   const [previewed, setPreviewed] = useState(false);
   const nameRef = useRef(null);
   const taskRef = useRef(null);
@@ -44,7 +44,7 @@ export function LaunchDialog({ initial, agent, onAgent, onClose }) {
   }
   return <Modal titleId={configuring ? 'dialog-title' : 'workspace-name'} onClose={onClose}>
     {configuring ? <div>
-      <span className="eyebrow">ATLAS / NEW BEGINNINGS</span>
+      <span className="eyebrow">ORYNQUILL / NEW BEGINNINGS</span>
       <h2 id="dialog-title">Your corner<br />of the cloud.</h2>
       <p className="dialog-intro">Explore a demo workspace. No charges or live AI services.</p>
       <form onSubmit={submit}>
@@ -57,7 +57,7 @@ export function LaunchDialog({ initial, agent, onAgent, onClose }) {
         <button className="button blue" type="submit">Create workspace <span>↗</span></button>
       </form>
     </div> : <div>
-      <span className="eyebrow">ATLAS / YOUR WORKSPACE</span>
+      <span className="eyebrow">ORYNQUILL / YOUR WORKSPACE</span>
       <h2 id="workspace-name">{agent.name}</h2>
       <div className="workspace-status">✳ Workspace ready</div>
       <dl>{Object.entries({ Region: agent.region, Plan: agent.plan, Focus: agent.focus }).map(([key,value]) => <React.Fragment key={key}><dt>{key}</dt><dd>{value}</dd></React.Fragment>)}</dl>

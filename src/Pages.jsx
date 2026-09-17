@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+
+function PageIntro({ number, label, title, description }) {
+ return <section className="page-intro"><div className="page-topline"><a href="/">Home</a><span>{number} / {label}</span></div><span className="eyebrow">ORYNQUILL CLOUD / {label}</span><h1>{title}</h1><p>{description}</p></section>;
+}
+function PageEnd({ onLaunch, title = 'Follow the next idea.' }) {
+ return <section className="page-end"><span className="eyebrow">A BEGINNING, NOT A FINISH LINE.</span><h2>{title}</h2><button className="button light" onClick={() => onLaunch()}>Open your workspace <span>↗</span></button></section>;
+}
+
+export function ExplorePage({ onLaunch }) {
+ const spaces = [
+  ['01', 'A library for your thinking.', 'Research & discovery', 'Turn an open question into a path worth following. Gather context, compare perspectives, and keep the useful threads together.', 'Find three different perspectives on my idea and identify what I should explore next.'],
+  ['02', 'A studio for unfinished ideas.', 'Writing & ideas', 'Start with a fragment. Shape the outline, find the right words, and leave room for a surprising new direction.', 'Help me turn these scattered notes into a clear article outline.'],
+  ['03', 'A workshop for what comes next.', 'Coding & building', 'Move from a big ambition to small, concrete milestones. Think through the structure before you build.', 'Break my app idea into a first version I can realistically build.']
+ ];
+ return <>
+  <PageIntro number="01" label="EXPLORE" title={<>A room for<br /><em>every possibility.</em></>} description="A question, a half-formed thought, a project you keep coming back to. Give it somewhere to grow." />
+  <figure className="wide-art"><img src="/floating-library.png" alt="A surreal library of arches and spiraling books floating above clouds" fetchPriority="high" /><figcaption><span>FIG. 02 / THE LIBRARY OF POSSIBILITIES</span><span>LEAVE ROOM FOR DISCOVERY.</span></figcaption></figure>
+  <section className="editorial section"><div className="section-heading"><span className="eyebrow">MANY DIRECTIONS. ONE PLACE TO BEGIN.</span><h2>What will you<br />make room for?</h2></div><div className="space-list">{spaces.map(([id,title,focus,copy,prompt]) => <article className="space-row" key={id}><span className="space-id">{id}</span><div><h3>{title}</h3><p>{copy}</p></div><div className="prompt-card"><span className="eyebrow">TRY A STARTING POINT</span><p>“{prompt}”</p><button className="text-link" onClick={() => onLaunch(undefined,focus)}>Explore this direction ↗</button></div></article>)}</div></section>
+  <section className="split-story section"><div><span className="eyebrow">CONTEXT IS A KIND OF COMPASS.</span><h2>Keep the thread.<br /><em>Find the unexpected.</em></h2><p>Your workspace gives a project a place to live. Set its focus, return to the idea, and decide where to take it next.</p><a className="button outline" href="/workflows/">Discover the workflows <span>↗</span></a></div><img src="/atlas-observatory.png" alt="A monumental armillary sphere suspended over clouds" loading="lazy" /></section>
+  <PageEnd onLaunch={onLaunch} />
+ </>;
+}
+
+const workflows = [
+ { id:'01', category:'Research', title:'The curiosity briefing', time:'A clearer starting point', focus:'Research & discovery', description:'Explore a new subject without losing the big picture.', steps:['Choose one question you want to understand.','Collect useful perspectives and identify disagreements.','Outline what is known, uncertain, and worth investigating.'], prompt:'Create a balanced introduction to my topic, with key questions for further research.' },
+ { id:'02', category:'Writing', title:'From notes to narrative', time:'Make the idea readable', focus:'Writing & ideas', description:'Give scattered thoughts a structure people can follow.', steps:['Collect the fragments, notes, and examples.','Identify the central idea and intended audience.','Build an outline with a beginning, middle, and ending.'], prompt:'Organize my notes into a strong outline without losing my voice.' },
+ { id:'03', category:'Planning', title:'A more intentional week', time:'Make space for what matters', focus:'Planning & routines', description:'Turn a crowded list into a realistic rhythm.', steps:['List your commitments and available time.','Separate essential work from optional tasks.','Arrange a week with room for focus and recovery.'], prompt:'Help me plan a realistic week around my priorities and existing commitments.' },
+ { id:'04', category:'Building', title:'The first useful version', time:'Turn ambition into milestones', focus:'Coding & building', description:'Find the smallest version of an idea worth building.', steps:['Define the problem and who experiences it.','Choose one essential journey for the first release.','Break the work into small, testable milestones.'], prompt:'Help me scope a first version of my app and create an implementation checklist.' },
+ { id:'05', category:'Research', title:'A decision with context', time:'Compare before you commit', focus:'Research & discovery', description:'Look at your options through the same lens.', steps:['Name the decision and its constraints.','Choose criteria that actually matter.','Compare options and record the tradeoffs.'], prompt:'Build a comparison framework for my options and highlight the unanswered questions.' },
+ { id:'06', category:'Writing', title:'The fresh perspective', time:'See the familiar differently', focus:'Writing & ideas', description:'Find a new angle when a draft feels stuck.', steps:['Explain the idea in one clear sentence.','Explore three different perspectives.','Choose an angle and sketch a new opening.'], prompt:'Suggest three distinct angles for this idea, then help me develop the strongest one.' }
+];
+
+export function WorkflowsPage({ onLaunch }) {
+ const [filter,setFilter] = useState('All');
+ const [selected,setSelected] = useState(workflows[0]);
+ const categories=['All','Research','Writing','Planning','Building'];
+ const visible=workflows.filter(w=>filter==='All'||w.category===filter);
+ function chooseFilter(category) {setFilter(category);if(category!=='All'&&selected.category!==category)setSelected(workflows.find(w=>w.category===category));}
+ return <>
+  <PageIntro number="02" label="WORKFLOWS" title={<>Start with a spark.<br /><em>Find your rhythm.</em></>} description="Six starting points for the work you want to do. Explore a sequence, make it your own, and take the first step." />
+  <section className="workflow-section section"><div className="workflow-toolbar"><span className="eyebrow">THE WORKFLOW COLLECTION</span><div className="workflow-filters" role="group" aria-label="Filter workflows">{categories.map(c=><button key={c} onClick={()=>chooseFilter(c)} aria-pressed={filter===c} className={filter===c?'selected':''}>{c}</button>)}</div></div><div className="workflow-layout"><div className="workflow-list">{visible.map(w=><button className={'workflow-item '+(selected.id===w.id?'chosen':'')} key={w.id} onClick={()=>setSelected(w)} aria-pressed={selected.id===w.id}><span className="eyebrow">{w.id} / {w.category}</span><h3>{w.title}</h3><p>{w.description}</p><span className="workflow-arrow">↗</span></button>)}</div><article className="workflow-detail" aria-live="polite"><span className="eyebrow">IN FOCUS / {selected.category}</span><h2>{selected.title}</h2><p>{selected.time}</p><ol>{selected.steps.map(step=><li key={step}>{step}</li>)}</ol><div className="workflow-prompt"><span className="eyebrow">YOUR OPENING PROMPT</span><p>“{selected.prompt}”</p></div><button className="button blue" onClick={()=>onLaunch(undefined,selected.focus)}>Try this direction <span>↗</span></button><span className="workflow-note">Opens the interactive workspace preview.</span></article></div></section>
+  <section className="workflow-banner"><img src="/floating-library.png" alt="Spiraling books and a library among clouds" loading="lazy" /><div><span className="eyebrow">NO TWO MINDS WORK THE SAME WAY.</span><h2>Take the structure.<br />Make it yours.</h2><a className="text-link" href="/explore/">Explore the possibilities ↗</a></div></section>
+  <PageEnd onLaunch={onLaunch} title="One small step is enough." />
+ </>;
+}
+
+export function AboutPage({ onLaunch }) {
+ return <>
+  <PageIntro number="03" label="OUR POINT OF VIEW" title={<>Curiosity is<br /><em>our compass.</em></>} description="Technology should leave you with more room to think. Orynquill begins with that simple idea." />
+  <figure className="wide-art"><img src="/lunar-observatory.png" alt="A solitary explorer overlooks a lunar observatory and a ringed planet above clouds" fetchPriority="high" /><figcaption><span>FIG. 03 / AN OPEN HORIZON</span><span>THERE IS ALWAYS MORE TO DISCOVER.</span></figcaption></figure>
+  <section className="manifesto section"><span className="eyebrow">THE WAY WE SEE IT</span><div><h2>Less noise.<br />More room for<br /><em>what matters.</em></h2><p>The best tools give you a place to begin, then make room for your judgment. They help you hold a complicated thought without telling you what to think.</p><p>Orynquill is built around a quieter relationship with technology: a focused workspace, a clear next step, and enough openness for an idea to become something you did not expect.</p><p>Not every question needs an immediate answer. Sometimes it needs a little more space.</p></div></section>
+  <section className="values section"><div className="section-heading"><span className="eyebrow">THREE IDEAS WE COME BACK TO</span><h2>A little intention<br />goes a long way.</h2></div><div className="values-grid"><article><span>01 / CLARITY</span><h3>Make the next<br />step visible.</h3><p>Keep the important things in view. A thoughtful interface should help you move forward with less friction.</p></article><article><span>02 / CURIOSITY</span><h3>Leave a door<br />open.</h3><p>Good questions create possibilities. Build with enough flexibility to follow an unexpected direction.</p></article><article><span>03 / AGENCY</span><h3>Keep the person<br />at the center.</h3><p>Your goals, your context, your decisions. A workspace should support your thinking and respect your choices.</p></article></div></section>
+  <section className="about-note section"><span className="eyebrow">WHERE WE ARE TODAY</span><h2>A working interface.<br />An open beginning.</h2><p>You can explore the pages, compare plans, and configure a browser-session workspace. Live AI execution and paid services are not connected yet.</p><a className="text-link" href="/workflows/">Find a place to start ↗</a></section>
+  <PageEnd onLaunch={onLaunch} title="The horizon is yours." />
+ </>;
+}
+
+export function NotFoundPage(){return <section className="page-intro not-found"><span className="eyebrow">404 / OFF THE MAP</span><h1>A different<br /><em>direction.</em></h1><p>This page does not exist. There are still plenty of places to explore.</p><a className="button light" href="/">Return home <span>↗</span></a></section>;}
