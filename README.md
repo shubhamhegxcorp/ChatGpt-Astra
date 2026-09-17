@@ -2,13 +2,13 @@
 
 An original responsive website inspired by https://portal.nousresearch.com/cloud.
 
-Open `dist/index.html` directly, or run `node server.mjs` and visit http://127.0.0.1:4173.
+Install with `npm install`, then run `npm run dev`. Build for production with `npm run build`, or inspect the production build with `npm run preview`.
 
-The static `dist` folder can be hosted by any static website host. No installation or build step is required.
+Built completely in React with Vite. React owns the page, navigation state, billing selection, accessible dialogs, controlled setup form, and workspace state. The generated `dist` folder can be hosted by any static website host. The monochrome treatment preserves the original artwork through a grayscale presentation filter.
 
 ## Included
 
-Original identity and observatory illustration; responsive navigation; six features; walkthrough; monthly/yearly plan controls; accessible FAQ disclosures; native modal dialogs; validated demo setup; session-only agent workspace; privacy and design credits.
+Original identity and observatory illustration; responsive navigation; six features; walkthrough; monthly/yearly plan controls; accessible FAQ disclosures; native modal dialogs; validated demo setup; session-only agent workspace; privacy information. Visible design credits and concept labels have been removed.
 
 The agent flow is a clearly labeled interactive demo. It does not provision cloud infrastructure, perform AI inference, charge payments, or persist user information. Demo configuration resets on reload.
 
