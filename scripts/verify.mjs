@@ -16,7 +16,7 @@ try {
   if(route==='/missing/'&&!html.includes('404 / OFF THE MAP')) throw new Error('Missing error page');
   console.log('PASS render, branding, artwork, and direct entry: '+route);
  }
- const css=await readFile('src/styles.css','utf8')+await readFile('src/resources.css','utf8');
+ const css=await readFile('src/styles.css','utf8')+await readFile('src/resources.css','utf8')+await readFile('src/resource-polish.css','utf8');
  const colors=[...css.matchAll(/#([0-9a-f]{3,8})\b/gi)].map(x=>x[1]);
  if(colors.some(h=>h.length<5?!(h[0]===h[1]&&h[1]===h[2]):!(h.slice(0,2)===h.slice(2,4)&&h.slice(2,4)===h.slice(4,6))))throw new Error('Non-monochrome CSS found');
  console.log('PASS monochrome palette');
