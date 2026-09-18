@@ -40,15 +40,6 @@ Generated with the built-in image-generation tool, without text, logos, or water
 - `public/floating-library.png`: A surreal floating library with arched corridors and stacks of books spiraling through clouds. Antique scientific engraving, intricate fine crosshatching and meticulously drawn black ink linework on white. Wide 3:2, atmospheric scene with graceful arches and a sweeping spiral of books, richly detailed yet spacious. Monochrome black ink on white only. No typography, letters, logos, watermark, interface, borders, or colored tones.
 - `public/lunar-observatory.png`: A lone small explorer overlooking a monumental lunar observatory and a ringed planet above a cloud ocean. Vintage astronomical etching with intricate engraved linework and fine crosshatching. Cinematic wide 3:2, small explorer establishing the immense scale of the observatory and celestial backdrop. Black and white only. No typography, letters, text, logo, watermark, interface, borders, or colored tones.
 
-## Public-domain archive images
-
-The expanded editorial layout uses four historical images. The underlying works are public domain; each image is credited and linked beside its appearance in the site.
-
-- `public/astronomers-ferat.jpg`: “Astronomers” by Jules Férat, ca. 1871, via Old Book Illustrations. https://www.oldbookillustrations.com/illustrations/astronomers/
-- `public/comet-cornell.jpg`: “The Comet” by Thomas Cornell, 1789, via The Public Domain Review’s “Flowers of the Sky.” https://publicdomainreview.org/collection/flowers-of-the-sky
-- `public/grandville-cosmos.jpg`: illustration from J. J. Grandville’s *Un Autre Monde*, 1844, via the same Public Domain Review collection.
-- `public/great-comet-1881.jpg`: The Great Comet of 1881 by Étienne Léopold Trouvelot, via the same Public Domain Review collection.
-
 ## Original artwork
 
 Asset: `dist/atlas-observatory.png`. Generated once with the built-in image-generation tool.
