@@ -1,6 +1,6 @@
 /* Full-bleed scroll reveal for the shared footer landscape. */
-.footer-landscape{width:100%;margin:0;position:relative;overflow:hidden;background:#111;border:0;min-height:clamp(430px,72vh,900px);isolation:isolate}
-.footer-landscape img{display:block;width:100%;height:clamp(430px,72vh,900px);object-fit:cover;filter:none;opacity:1;transform:scale(.78);transform-origin:center center;animation:footer-landscape-reveal linear both;animation-timeline:view();animation-range:entry 0% cover 72%}
+.footer-landscape{width:100vw;margin:0 0 0 calc(50% - 50vw);position:relative;overflow:hidden;background:#111;border:0;min-height:clamp(430px,72vh,900px);isolation:isolate}
+.footer-landscape img{display:block;width:100%;height:clamp(430px,72vh,900px);object-fit:cover;object-position:center center;filter:none;opacity:1;transform:scale(.78);transform-origin:center center;animation:footer-landscape-reveal linear both;animation-timeline:view();animation-range:entry 0% cover 72%}
 .footer-landscape figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;padding:75px 5% 25px;background:linear-gradient(transparent,rgba(0,0,0,.72));font:10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#fff}
 @keyframes footer-landscape-reveal{from{transform:scale(.78)}to{transform:scale(1)}}
 @media(max-width:760px){.footer-landscape,.footer-landscape img{min-height:430px;height:62vh}.footer-landscape img{transform:scale(.86)}.footer-landscape figcaption{font-size:9px;padding-left:5%;padding-right:5%}}
