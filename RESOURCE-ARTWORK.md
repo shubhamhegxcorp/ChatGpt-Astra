@@ -1,5 +1,7 @@
 # Original resource-page artwork
 
+Archived prompts: these three illustrations were removed from the website on September 21, 2026. The existing observatory, floating library, and lunar observatory artwork now fill their places. The removed images remain recoverable in Git history.
+
 Generated with the built-in image-generation tool, September 18, 2026. Original assets, not taken from Hermes or a stock-image website. Existing homepage artwork and homepage code are unchanged.
 
 ## public/celestial-pavilion.png
@@ -19,4 +21,3 @@ Use case: stylized-concept. Asset type: premium website editorial illustration, 
 Final prompt:
 
 Use case: stylized-concept. Asset type: landscape 3:2 editorial illustration for a black-and-white website about exploration and a personal cloud workspace. Original highly detailed nineteenth-century copperplate engraving: a graceful Victorian astronomical airship with a domed cabin and small telescope docked beside a tall stone skyport above an ocean of clouds, a long curved walkway, distant floating islands and one large crescent moon. A strong central airship silhouette, breathtaking scale, tiny architectural details, delicate cross-hatching and stippling, white engraved lines on rich black with silver gray midtones. Strictly monochrome. Sophisticated imaginative scientific atlas, coherent architecture, no cartoon rendering or modern sci-fi neon. No text, lettering, logos, watermarks, or UI.
-
